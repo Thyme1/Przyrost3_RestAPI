@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Przyrost3RestApi:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Przyrost3RestApi</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="spring-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Przyrost3RestApi:war exploded" />
+    </root>
+  </artifact>
+</component>
