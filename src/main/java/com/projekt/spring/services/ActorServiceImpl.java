@@ -1,7 +1,6 @@
 package com.projekt.spring.services;
 
-import com.pracownia.spring.entities.Product;
-import com.pracownia.spring.repositories.ProductRepository;
+
 import com.projekt.spring.entities.Actors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -10,39 +9,39 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 /**
- * Product service implement.
+ * Actor service implement.
  */
 @Service
 public class ActorServiceImpl implements ActorService {
 
     @Autowired
-    private Actor productRepository;
+    private com.projekt.spring.repositories.ActorRepository actorRepository;
 
 
 
     @Override
     public Iterable<Actors> listAllActors() {
-        return null;
+        return actorRepository.findAll();
     }
 
     @Override
     public Optional<Actors> getActorById(Integer id) {
-        return Optional.empty();
+        return actorRepository.findById(id);
     }
 
     @Override
     public Actors saveActor(Actors product) {
-        return null;
+        return actorRepository.save(product);
     }
 
     @Override
     public void deleteActor(Integer id) {
-
+        actorRepository.deleteById(id);
     }
 
     @Override
     public Boolean checkIfExist(Integer id) {
-        if (productRepository.checkIfExist(id) > 0)
+        if (actorRepository.checkIfExist(id) > 0)
             return true;
         else
             return false;
@@ -50,7 +49,7 @@ public class ActorServiceImpl implements ActorService {
 
     @Override
     public Iterable<Actors> listAllActorsPaging(Integer pageNr, Integer howManyOnPage) {
-        return null;
+        return actorRepository.findAll(new PageRequest(pageNr,howManyOnPage));
     }
 
 
