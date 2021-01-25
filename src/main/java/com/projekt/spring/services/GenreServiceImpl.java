@@ -1,4 +1,0 @@
-package com.projekt.spring.services;
-
-public class GenreServiceImpl {
-}

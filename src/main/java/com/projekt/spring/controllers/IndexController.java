@@ -65,14 +65,10 @@ public class IndexController {
         Actors a2 = new Actors();
         Actors a3 = new Actors();
 
-        Address address1 = new Address("Biedra", "Poznan", Arrays.asList(p1.getProductId(), p2.getProductId(), p3.getProductId()));
+        Address address1 = new Address("Biedra", "Poznan", Arrays.asList(a1.getProductId(), p2.getProductId(), p3.getProductId()));
         Address address2 = new Address("Lidl", "Krosno", Arrays.asList(p1.getProductId(), p2.getProductId()));
 
-        p1.getSellers().add(seller);
-        p2.getSellers().add(seller);
-        p3.getSellers().add(seller);
-        p1.getSellers().add(seller2);
-        p2.getSellers().add(seller2);
+        
 
         productService.saveProduct(p1);
         productService.saveProduct(p2);

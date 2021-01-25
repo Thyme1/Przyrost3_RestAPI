@@ -1,4 +1,5 @@
 package com.projekt.spring.services;
+import com.projekt.spring.entities.Director;
 import com.projekt.spring.entities.Genres;
 import java.util.Optional;
 
@@ -7,13 +8,15 @@ public interface GenresService {
 
     Iterable<Genres> listAllGenres();
 
-    Optional<Genres> getGenreById(Integer id);
+    Optional<Genres> getGenresById(Integer id);
 
-    Genres saveGenre(Genres product);
+    Genres saveGenres(Genres product);
 
-    void deleteGenre(Integer id);
+    void deleteGenres(Integer id);
 
     Boolean checkIfExist(Integer id);
+    public Iterable<Genres> listAllGenresPaging(Integer pageNr, Integer howManyOnPage);
+
 
 
 
