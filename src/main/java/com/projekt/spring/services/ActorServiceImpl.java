@@ -2,6 +2,8 @@ package com.projekt.spring.services;
 
 
 import com.projekt.spring.entities.Actors;
+import com.projekt.spring.repositories.ActorRepository;
+import com.projekt.spring.repositories.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,10 @@ import java.util.Optional;
 public class ActorServiceImpl implements ActorService {
 
     @Autowired
-    private com.projekt.spring.repositories.ActorRepository actorRepository;
+    private ActorRepository actorRepository;
+
+    @Autowired
+    private AddressRepository addressRepository;
 
 
 
@@ -30,8 +35,8 @@ public class ActorServiceImpl implements ActorService {
     }
 
     @Override
-    public Actors saveActor(Actors product) {
-        return actorRepository.save(product);
+    public Actors saveActor(Actors actor) {
+        return actorRepository.save(actor);
     }
 
     @Override

@@ -41,7 +41,7 @@ public class SpringBootWebApplication extends SpringBootServletInitializer {
     @Bean
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .select().apis(RequestHandlerSelectors.basePackage("com.pracownia.spring.controllers"))
+                .select().apis(RequestHandlerSelectors.basePackage("com.projekt.spring.controllers"))
                 .build();
     }
 

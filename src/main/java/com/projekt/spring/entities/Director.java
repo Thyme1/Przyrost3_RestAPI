@@ -10,9 +10,14 @@ import java.util.Set;
 
 public class Director {
 
-    @Column(name="id", nullable=false)
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+
+
+    @Column
+    private String directorId;
 
     @Column(nullable=false)
     String name;
@@ -21,11 +26,26 @@ public class Director {
     String surname;
 
     @OneToOne(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
-    @JoinColumn(name="add_id", referencedColumnName="idAdd")
+    @JoinColumn(name="add_id")
     Address address;
 
     @OneToMany(mappedBy="director", fetch=FetchType.EAGER)
     private Set<Movie> movies;
+
+
+    public Director() {
+    }
+
+    public Director(String name, String surname, Address address, Set<Movie> movies) {
+        this.name=name;
+        this.surname=surname;
+        this.address=address;
+        this.movies=movies;
+    }
+
+    Director(String directorId){
+        this.directorId = directorId;
+    }
 
     Set<Movie> getMovies() {
         return movies;
@@ -35,11 +55,11 @@ public class Director {
         this.movies=movies;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id=id;
     }
 
@@ -65,6 +85,14 @@ public class Director {
 
     public void setAddress(Address address) {
         this.address=address;
+    }
+
+    public String getDirectorId() {
+        return directorId;
+    }
+
+    public void  setDirectorId(String directorId) {
+        this.directorId=directorId;
     }
 
 }

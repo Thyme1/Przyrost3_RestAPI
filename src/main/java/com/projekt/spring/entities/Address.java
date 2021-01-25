@@ -8,23 +8,18 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name="address", propOrder={
-        "idAdd",
-        "street",
-        "city",
-        "nr",
-        "housenr",
-        "postcode"
-})
+
 
 @Entity
 @Table(name="ADDRESSES")
 
 public class Address {
     @Id
-    @Column(name="idAdd", nullable=false)
-    private Long idAdd;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @Column
+    private String addressId;
 
     @Column(nullable=false)
     String street;
@@ -42,13 +37,29 @@ public class Address {
     String postcode;
 
     @JsonProperty("AddressId")
-    public Long getId() {
-        return idAdd;
+    public Integer getId() {
+        return id;
 
     }
 
-    public void setId(Long idAdd) {
-        this.idAdd=idAdd;
+    public Address() {
+    }
+
+    public Address(String addressId, String street, String city, String nr, String housenr, String postcode) {
+        this.addressId=addressId;
+        this.street=street;
+        this.city=city;
+        this.nr=nr;
+        this.housenr=housenr;
+        this.postcode=postcode;
+    }
+
+
+
+
+
+    public void setId(Integer idAdd) {
+        this.id=idAdd;
     }
 
     public String getStreet() {
@@ -89,6 +100,14 @@ public class Address {
 
     public void setPostcode(String postcode) {
         this.postcode=postcode;
+    }
+
+    public String getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(String productId) {
+        this.addressId = productId;
     }
 
 

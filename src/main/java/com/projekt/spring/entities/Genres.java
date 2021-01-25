@@ -10,20 +10,33 @@ import javax.persistence.Table;
 public class Genres {
 
 
-    @Column(name="id", nullable=false)
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @Column
+    private String genreId;
 
     @Column(nullable=false)
     String name;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id=id;
     }
+
+    public Genres() {
+    }
+
+    public Genres(String genreId, String name) {
+        this.genreId = genreId;
+        this.name=name;
+    }
+
+
 
     public String getName() {
         return name;
@@ -33,4 +46,11 @@ public class Genres {
         this.name=name;
     }
 
+    public String getGenreId() {
+        return genreId;
+    }
+
+    public void setGenreId(String genreId) {
+        this.genreId=genreId;
+    }
 }

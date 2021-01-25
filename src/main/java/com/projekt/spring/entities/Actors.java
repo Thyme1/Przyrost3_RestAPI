@@ -6,6 +6,8 @@ import javax.persistence.*;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
+import java.time.ZonedDateTime;
 import java.util.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -26,10 +28,11 @@ import java.util.*;
 public class Actors {
 
     @Id
-    @Column(name = "idAct", nullable=false)
-    @XmlAttribute(name = "idAct", required = true)
-    private Long idAct;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
+    @Column
+    private String actorID;
     @Column(nullable=false)
     String name;
     @Column(nullable=false)
@@ -43,8 +46,26 @@ public class Actors {
     @Column
     String favGenre;
 
+
+    //required by Hibernate
+    public Actors(){
+
+    }
+
+    public Actors(String actorID, String name, String surname, Integer age, String gender, Integer salary, String favGenre, Address address ) {
+        this.actorID = actorID;
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.gender = gender;
+        this.salary = salary;
+        this.favGenre = favGenre;
+        this.address = address;
+        this.movies = movies;
+    }
+
     @OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.PERSIST)
-    @JoinColumn(name="address_id", referencedColumnName = "idAdd")
+    @JoinColumn(name="address_id")
     Address address;
 
     @OneToMany(mappedBy="actorId",fetch=FetchType.EAGER)
@@ -62,16 +83,23 @@ public class Actors {
     String getFavGenre() {
         return favGenre;
     }
+
+
+
     public void setFavGenre(String favGenre) {
         this.favGenre=favGenre;
     }
 
     @JsonProperty("ActorId")
-    public Long getId() {
-        return idAct;
+    public String getActorsId() {
+        return actorID;
     }
-    public void setId(Long idAct) {
-        this.idAct=idAct;
+
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer idAct) {
+        this.id=idAct;
     }
 
     public String getName() {
@@ -114,7 +142,7 @@ public class Actors {
         this.address=address1;
     }
     @JsonIgnore
-    public Long counter = 50L;
+    public Integer counter = 50;
 
 
     public Address getAddress() {
@@ -124,5 +152,15 @@ public class Actors {
             Address adresNull = new Address();
             adresNull.setId(counter++);
             return adresNull ;}
+    }
+
+
+
+    public String getActorID() {
+        return actorID;
+    }
+
+    public void setActorID(String actorID) {
+        this.actorID=actorID;
     }
 }

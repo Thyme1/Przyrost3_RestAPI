@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface GenresRepository extends CrudRepository<Genres, Integer>, PagingAndSortingRepository<Genres, Integer> {
 
-    Genres findByGenresId(String productId);
+    Genres findBygenreId(String genreId);
 
     @Query("select count(*) from Genres p where p.id = ?1")
     Integer checkIfExist(Integer id);

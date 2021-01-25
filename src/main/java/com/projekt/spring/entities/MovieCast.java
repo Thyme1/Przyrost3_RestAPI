@@ -12,15 +12,17 @@ import javax.persistence.Table;
 public class MovieCast {
 
 
-    @Column(name="id")
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @Column
+    private String movieCastId;
 
     @Column(nullable=false)
     String role;
 
     @ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-//    @JsonManagedReference(value="act")
     @JsonIgnore
     @JoinColumn(name="actorId", nullable=false)
     private Actors actorId;
@@ -28,14 +30,28 @@ public class MovieCast {
     @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinColumn(name="movieId", nullable=false)
     @JsonIgnore
-    private hibernate.model.Movie movieId;
+    private Movie movieId;
 
 
-    public hibernate.model.Movie getMovie() {
+    public MovieCast() {
+    }
+
+    public MovieCast(String movieCastId, String role, Actors actorId, Movie movieId) {
+        this.movieCastId=movieCastId;
+        this.role=role;
+        this.actorId=actorId;
+        this.movieId=movieId;
+    }
+
+    MovieCast(String movieCastId) {
+
+    }
+
+    public Movie getMovie() {
         return movieId;
     }
 
-    public void setMovie(hibernate.model.Movie movie) {
+    public void setMovie(Movie movie) {
         this.movieId=movie;
     }
 
@@ -47,9 +63,6 @@ public class MovieCast {
         this.actorId=actor;
     }
 
-    public MovieCast() {
-    }
-
     public Actors getActorId() {
         return actorId;
     }
@@ -58,11 +71,11 @@ public class MovieCast {
         this.actorId=actorId;
     }
 
-    public hibernate.model.Movie getMovieId() {
+    public Movie getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(hibernate.model.Movie movieId) {
+    public void setMovieId(Movie movieId) {
         this.movieId=movieId;
     }
 
@@ -74,12 +87,19 @@ public class MovieCast {
         this.role=role;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id=id;
     }
 
+    public String getMovieCastId() {
+        return movieCastId;
+    }
+
+    public void setMovieCastId(String movieCastId) {
+        this.movieCastId=movieCastId;
+    }
 }

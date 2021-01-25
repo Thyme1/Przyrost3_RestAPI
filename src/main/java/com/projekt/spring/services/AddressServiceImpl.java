@@ -2,6 +2,8 @@ package com.projekt.spring.services;
 
 import com.projekt.spring.entities.Address;
 
+import com.projekt.spring.repositories.ActorRepository;
+import com.projekt.spring.repositories.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +12,10 @@ import java.util.Optional;
 public class AddressServiceImpl implements AddressService {
 
     @Autowired
-    private com.projekt.spring.repositories.AddressRepository addressRepository;
+    private AddressRepository addressRepository;
+
+    @Autowired
+    private ActorRepository actorRepository;
 
     @Override
     public Iterable<Address> listAllAdresses() {

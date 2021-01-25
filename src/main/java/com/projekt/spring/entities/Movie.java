@@ -16,9 +16,12 @@ import java.util.Set;
 public class Movie {
 
 
-    @Column(name="id")
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @Column
+    private String movieId;
 
     @Column(nullable=false)
     String title;
@@ -52,6 +55,26 @@ public class Movie {
     @JsonIgnore
     private Set<MovieCast> actors;
 
+    public Movie() {
+    }
+
+    public Movie(String movieId, String title, String time, String language, DateTime releaseDate, String releaseCountry, String movieGenre, Director director, Set<MovieCast> actors) {
+        this.movieId=movieId;
+        this.title=title;
+        this.time=time;
+        this.language=language;
+        this.releaseDate=releaseDate;
+        this.releaseCountry=releaseCountry;
+        this.movieGenre=movieGenre;
+        this.director=director;
+        this.actors=actors;
+    }
+
+    Movie(String movieId) {
+
+
+    }
+
     public Set<MovieCast> getActors() {
         return actors;
     }
@@ -69,11 +92,11 @@ public class Movie {
     }
 
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id=id;
     }
 
@@ -125,4 +148,11 @@ public class Movie {
         this.director=director;
     }
 
+    public String getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(String movieId) {
+        this.movieId=movieId;
+    }
 }
