@@ -107,7 +107,17 @@ public class ActorController {
         return new RedirectView("/api/actor", true);
     }
 
+    /**
+     * View a specific actor by its id.
+     *
+     * @return
+     */
+    @RequestMapping(value = "/actor/salary", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Actors> getHighestSalaryActor(@RequestBody Integer salary) {
+        return actorService.getHighestSalary(salary);
+    }
 
-    
+
+
 
 }

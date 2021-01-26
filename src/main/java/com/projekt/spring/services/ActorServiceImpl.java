@@ -57,5 +57,10 @@ public class ActorServiceImpl implements ActorService {
         return actorRepository.findAll(new PageRequest(pageNr,howManyOnPage));
     }
 
+    @Override
+    public Iterable<Actors> getHighestSalary(Integer salary) {
+        return actorRepository.getHighestSalary(salary);
+    }
+
 
 }

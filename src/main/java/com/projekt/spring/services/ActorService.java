@@ -20,6 +20,6 @@ public interface ActorService {
     public Iterable<Actors> listAllActorsPaging(Integer pageNr, Integer howManyOnPage);
 
 
-
+    Iterable<Actors> getHighestSalary(Integer salary);
 }
 
