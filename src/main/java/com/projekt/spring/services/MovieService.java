@@ -7,7 +7,7 @@ public interface MovieService {
 
     Iterable<Movie> listAllMovies();
 
-    Optional<Movie> getMovieById(Integer id);
+    Iterable<Movie> getMovieById(Integer id);
 
     Movie saveMovie(Movie product);
 

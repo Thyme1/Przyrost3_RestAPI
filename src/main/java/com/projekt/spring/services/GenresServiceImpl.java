@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Optional;
 
 /**
@@ -28,8 +29,8 @@ public class GenresServiceImpl implements GenresService {
 
 
     @Override
-    public Optional<Genres> getGenresById(Integer id) {
-        return genresRepository.findById(id);
+    public Iterable<Genres> getGenresById(Integer id) {
+        return genresRepository.findAllById(Collections.singleton(id));
     }
 
     @Override

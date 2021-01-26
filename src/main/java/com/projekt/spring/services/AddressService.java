@@ -11,7 +11,7 @@ public interface AddressService {
 
         Iterable<Address> listAllAdresses();
 
-        Optional<Address> getAddressById(Integer id);
+        Iterable<Address> getAddressById(Integer id);
 
         Address saveAddress(Address product);
 

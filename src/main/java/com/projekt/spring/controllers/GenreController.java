@@ -61,7 +61,7 @@ public class GenreController {
      * @return
      */
     @RequestMapping(value = "/genre/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<Genres> getByPublicId(@PathVariable("id") Integer publicId) {
+    public Iterable<Genres> getByPublicId(@PathVariable("id") Integer publicId) {
         return genresService.getGenresById(publicId);
     }
 
@@ -71,7 +71,7 @@ public class GenreController {
      * @return
      */
     @RequestMapping(value = "/genre", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<Genres> getByParamPublicId(@RequestParam("id") Integer publicId) {
+    public Iterable<Genres> getByParamPublicId(@RequestParam("id") Integer publicId) {
         return genresService.getGenresById(publicId);
     }
 

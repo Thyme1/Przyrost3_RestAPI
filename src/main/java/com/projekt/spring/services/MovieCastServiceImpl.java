@@ -5,6 +5,7 @@ import com.projekt.spring.entities.MovieCast;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Optional;
 
 /**
@@ -25,8 +26,8 @@ public class MovieCastServiceImpl implements MovieCastService {
 
 
     @Override
-    public Optional<MovieCast> getMovieCastById(Integer id) {
-        return movieCastRepository.findById(id);
+    public Iterable<MovieCast> getMovieCastById(Integer id) {
+        return movieCastRepository.findAllById(Collections.singleton(id));
     }
 
     @Override

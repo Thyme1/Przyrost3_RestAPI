@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Optional;
 
 /**
@@ -26,8 +27,8 @@ public class DirectorServiceImpl implements DirectorService {
 
 
     @Override
-    public Optional<Director> getDirectorById(Integer id) {
-        return directorRepository.findById(id);
+    public Iterable<Director> getDirectorById(Integer id) {
+        return directorRepository.findAllById(Collections.singleton(id));
     }
 
     @Override

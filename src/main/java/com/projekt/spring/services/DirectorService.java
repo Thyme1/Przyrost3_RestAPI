@@ -8,7 +8,7 @@ public interface DirectorService {
 
     Iterable<Director> listAllDirectors();
 
-    Optional<Director> getDirectorById(Integer id);
+    Iterable<Director> getDirectorById(Integer id);
 
     Director saveDirector(Director product);
 

@@ -56,7 +56,7 @@ public class MovieCastController {
      * @return
      */
     @RequestMapping(value = "/movieCast/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<MovieCast> getByPublicId(@PathVariable("id") Integer publicId) {
+    public Iterable<MovieCast> getByPublicId(@PathVariable("id") Integer publicId) {
         return movieCastService.getMovieCastById(publicId);
     }
 
@@ -66,7 +66,7 @@ public class MovieCastController {
      * @return
      */
     @RequestMapping(value = "/movieCast", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<MovieCast> getByParamPublicId(@RequestParam("id") Integer publicId) {
+    public Iterable<MovieCast> getByParamPublicId(@RequestParam("id") Integer publicId) {
         return movieCastService.getMovieCastById(publicId);
     }
 

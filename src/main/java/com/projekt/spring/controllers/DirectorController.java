@@ -59,7 +59,7 @@ public class DirectorController {
      * @return
      */
     @RequestMapping(value = "/director/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<Director> getByPublicId(@PathVariable("id") Integer publicId) {
+    public Iterable<Director> getByPublicId(@PathVariable("id") Integer publicId) {
         return directorService.getDirectorById(publicId);
     }
 
@@ -69,7 +69,7 @@ public class DirectorController {
      * @return
      */
     @RequestMapping(value = "/director", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<Director> getByParamPublicId(@RequestParam("id") Integer publicId) {
+    public Iterable<Director> getByParamPublicId(@RequestParam("id") Integer publicId) {
         return directorService.getDirectorById(publicId);
     }
 

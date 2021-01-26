@@ -7,6 +7,7 @@ import com.projekt.spring.repositories.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Optional;
 @Service
 public class AddressServiceImpl implements AddressService {
@@ -23,8 +24,8 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Optional<Address> getAddressById(Integer id) {
-        return addressRepository.findById(id);
+    public Iterable<Address> getAddressById(Integer id) {
+        return addressRepository.findAllById(Collections.singleton(id));
     }
 
     @Override

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Optional;
 
 /**
@@ -26,8 +27,8 @@ public class MovieServiceImpl implements MovieService {
 
 
     @Override
-    public Optional<Movie> getMovieById(Integer id) {
-        return movieRepository.findById(id);
+    public Iterable<Movie> getMovieById(Integer id) {
+        return movieRepository.findAllById(Collections.singleton(id));
     }
 
     @Override

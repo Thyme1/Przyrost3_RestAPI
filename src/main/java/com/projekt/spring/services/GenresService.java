@@ -10,7 +10,7 @@ public interface GenresService {
 
     Iterable<Genres> listAllGenres();
 
-    Optional<Genres> getGenresById(Integer id);
+    Iterable<Genres> getGenresById(Integer id);
 
     Genres saveGenres(Genres product);
 

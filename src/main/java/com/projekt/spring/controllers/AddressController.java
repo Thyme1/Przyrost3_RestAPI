@@ -56,7 +56,7 @@ public class AddressController {
      * @return
      */
     @RequestMapping(value = "/address/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<Address> getByPublicId(@PathVariable("id") Integer publicId) {
+    public Iterable<Address> getByPublicId(@PathVariable("id") Integer publicId) {
         return addressService.getAddressById(publicId);
     }
 
@@ -66,7 +66,7 @@ public class AddressController {
      * @return
      */
     @RequestMapping(value = "/address", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<Address> getByParamPublicId(@RequestParam("id") Integer publicId) {
+    public Iterable<Address> getByParamPublicId(@RequestParam("id") Integer publicId) {
         return addressService.getAddressById(publicId);
     }
 

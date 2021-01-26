@@ -7,7 +7,7 @@ public interface MovieCastService {
 
     Iterable<MovieCast> listAllMovieCasts();
 
-    Optional<MovieCast> getMovieCastById(Integer id);
+    Iterable<MovieCast> getMovieCastById(Integer id);
 
     MovieCast saveMovieCast(MovieCast product);
 
