@@ -109,4 +109,9 @@ public class DirectorController {
         return new RedirectView("/api/director", true);
     }
 
+    @RequestMapping(value = "/director/city", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Director> getHighestSalaryActor() {
+        return directorService.getDirectorFromCity();
+    }
+
 }

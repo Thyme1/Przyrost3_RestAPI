@@ -54,5 +54,10 @@ public class MovieServiceImpl implements MovieService {
         return movieRepository.findAll(new PageRequest(pageNr,howManyOnPage));
     }
 
+    @Override
+    public Iterable<Movie> getLongestMovie() {
+        return movieRepository.getLongestMovie();
+    }
+
 
 }

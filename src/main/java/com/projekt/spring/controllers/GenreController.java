@@ -2,7 +2,9 @@ package com.projekt.spring.controllers;
 
 
 import com.projekt.spring.entities.Actors;
+import com.projekt.spring.entities.Director;
 import com.projekt.spring.entities.Genres;
+import com.projekt.spring.entities.Movie;
 import com.projekt.spring.services.ActorService;
 import com.projekt.spring.services.GenresService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,6 +109,11 @@ public class GenreController {
     public RedirectView delete(HttpServletResponse response, @PathVariable Integer id) {
         genresService.deleteGenres(id);
         return new RedirectView("/api/genre", true);
+    }
+
+    @RequestMapping(value = "/genre/comedy", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Movie> getComedies() {
+        return genresService.getComedies();
     }
 
 

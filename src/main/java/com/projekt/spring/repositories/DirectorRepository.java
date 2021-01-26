@@ -15,6 +15,6 @@ public interface DirectorRepository extends CrudRepository<Director, Integer>, P
     @Query("select count(*) from Director p where p.id = ?1")
     Integer checkIfExist(Integer id);
 
-
-
+    @Query("select p from Director p where p.address.city = 'Warszawa'")
+    Iterable<Director> getDirectorFromCity();
 }

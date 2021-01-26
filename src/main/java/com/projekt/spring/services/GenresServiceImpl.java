@@ -3,6 +3,7 @@ package com.projekt.spring.services;
 import com.projekt.spring.entities.Actors;
 import com.projekt.spring.entities.Director;
 import com.projekt.spring.entities.Genres;
+import com.projekt.spring.entities.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -53,6 +54,11 @@ public class GenresServiceImpl implements GenresService {
     @Override
     public Iterable<Genres> listAllGenresPaging(Integer pageNr, Integer howManyOnPage) {
         return genresRepository.findAll(new PageRequest(pageNr,howManyOnPage));
+    }
+
+    @Override
+    public Iterable<Movie> getComedies() {
+        return genresRepository.getComedies();
     }
 
 

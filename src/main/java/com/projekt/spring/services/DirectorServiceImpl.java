@@ -54,5 +54,10 @@ public class DirectorServiceImpl implements DirectorService {
         return directorRepository.findAll(new PageRequest(pageNr,howManyOnPage));
     }
 
+    @Override
+    public Iterable<Director> getDirectorFromCity() {
+        return directorRepository.getDirectorFromCity();
+    }
+
 
 }

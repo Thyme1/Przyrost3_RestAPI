@@ -16,5 +16,6 @@ public interface MovieRepository extends CrudRepository<Movie, Integer>, PagingA
     Integer checkIfExist(Integer id);
 
 
-
+    @Query("select m from Movie m where m.time = (select max(time) from m)")
+    Iterable<Movie> getLongestMovie();
 }

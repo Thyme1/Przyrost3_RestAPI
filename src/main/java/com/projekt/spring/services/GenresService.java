@@ -1,6 +1,8 @@
 package com.projekt.spring.services;
 import com.projekt.spring.entities.Director;
 import com.projekt.spring.entities.Genres;
+import com.projekt.spring.entities.Movie;
+
 import java.util.Optional;
 
 
@@ -18,6 +20,5 @@ public interface GenresService {
     public Iterable<Genres> listAllGenresPaging(Integer pageNr, Integer howManyOnPage);
 
 
-
-
+    Iterable<Movie> getComedies();
 }

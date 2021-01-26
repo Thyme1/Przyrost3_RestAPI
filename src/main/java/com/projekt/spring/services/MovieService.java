@@ -18,5 +18,5 @@ public interface MovieService {
     public Iterable<Movie> listAllMoviesPaging(Integer pageNr, Integer howManyOnPage);
 
 
-
+    Iterable<Movie> getLongestMovie();
 }

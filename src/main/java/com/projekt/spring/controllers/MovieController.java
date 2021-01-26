@@ -2,6 +2,7 @@ package com.projekt.spring.controllers;
 
 
 import com.projekt.spring.entities.Actors;
+import com.projekt.spring.entities.Director;
 import com.projekt.spring.entities.Movie;
 import com.projekt.spring.services.ActorService;
 import com.projekt.spring.services.MovieService;
@@ -107,6 +108,11 @@ public class MovieController {
     public RedirectView delete(HttpServletResponse response, @PathVariable Integer id) {
         movieService.deleteMovie(id);
         return new RedirectView("/api/movie", true);
+    }
+
+    @RequestMapping(value = "/movie/longest", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Movie> getLongestMovie() {
+        return movieService.getLongestMovie();
     }
 
 }

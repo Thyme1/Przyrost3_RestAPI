@@ -19,5 +19,5 @@ public interface DirectorService {
     public Iterable<Director> listAllDirectorsPaging(Integer pageNr, Integer howManyOnPage);
 
 
-
+    Iterable<Director> getDirectorFromCity();
 }
