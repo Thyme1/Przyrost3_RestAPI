@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Optional;
 
 /**
@@ -30,8 +31,8 @@ public class ActorServiceImpl implements ActorService {
     }
 
     @Override
-    public Optional<Actors> getActorById(Integer id) {
-        return actorRepository.findById(id);
+    public Iterable<Actors> getActorById(Integer id) {
+        return actorRepository.findAllById(Collections.singleton(id));
     }
 
     @Override

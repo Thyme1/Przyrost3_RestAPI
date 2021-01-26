@@ -57,7 +57,7 @@ public class ActorController {
      * @return
      */
     @RequestMapping(value = "/actor/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<Actors> getByPublicId(@PathVariable("id") Integer publicId) {
+    public Iterable<Actors> getByPublicId(@PathVariable("id") Integer publicId) {
         return actorService.getActorById(publicId);
     }
 
@@ -67,7 +67,7 @@ public class ActorController {
      * @return
      */
     @RequestMapping(value = "/actor", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<Actors> getByParamPublicId(@RequestParam("id") Integer publicId) {
+    public Iterable<Actors> getByParamPublicId(@RequestParam("id") Integer publicId) {
         return actorService.getActorById(publicId);
     }
 

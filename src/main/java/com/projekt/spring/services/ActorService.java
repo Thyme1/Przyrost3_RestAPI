@@ -9,7 +9,7 @@ public interface ActorService {
 
     Iterable<Actors> listAllActors();
 
-    Optional<Actors> getActorById(Integer id);
+    Iterable<Actors> getActorById(Integer id);
 
     Actors saveActor(Actors product);
 
