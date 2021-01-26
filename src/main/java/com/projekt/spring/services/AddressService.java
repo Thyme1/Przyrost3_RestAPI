@@ -1,5 +1,6 @@
 package com.projekt.spring.services;
 
+import com.projekt.spring.entities.Actors;
 import com.projekt.spring.entities.Address;
 
 import java.util.Optional;
@@ -19,6 +20,5 @@ public interface AddressService {
         Boolean checkIfExist(Integer id);
 
 
-
-
+    Iterable<Address> getSmallestHouseNr(Integer number);
 }

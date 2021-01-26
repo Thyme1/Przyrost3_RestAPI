@@ -17,6 +17,6 @@ public interface AddressRepository extends CrudRepository<Address, Integer>, Pag
     @Query("select count(*) from Address p where p.id = ?1")
     Integer checkIfExist(Integer id);
 
-
-
+    @Query("SELECT c FROM Address c WHERE c.housenr = (select min(housenr) from c)")
+    Iterable<Address> getSmallestHouseNr(Integer housern);
 }

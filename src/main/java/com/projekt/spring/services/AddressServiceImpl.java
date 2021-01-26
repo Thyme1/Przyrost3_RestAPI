@@ -46,4 +46,9 @@ public class AddressServiceImpl implements AddressService {
             return false;
     }
 
+    @Override
+    public Iterable<Address> getSmallestHouseNr(Integer number) {
+       return addressRepository.getSmallestHouseNr(number);
+    }
+
 }

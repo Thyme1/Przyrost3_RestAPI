@@ -106,4 +106,10 @@ public class AddressController {
         return new RedirectView("/api/address", true);
     }
 
+
+    @RequestMapping(value = "/address/smallest", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Address> getHighestSalaryActor(Integer number) {
+        return addressService.getSmallestHouseNr(number);
+    }
+
 }
