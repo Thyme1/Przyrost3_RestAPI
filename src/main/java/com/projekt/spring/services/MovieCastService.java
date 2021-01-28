@@ -15,4 +15,5 @@ public interface MovieCastService {
     Boolean checkIfExist(Integer id);
 
 
+    Iterable<MovieCast> getNumberOfCasts();
 }

@@ -2,6 +2,7 @@ package com.projekt.spring.controllers;
 
 
 import com.projekt.spring.entities.Actors;
+import com.projekt.spring.entities.Movie;
 import com.projekt.spring.entities.MovieCast;
 import com.projekt.spring.services.ActorService;
 import com.projekt.spring.services.MovieCastService;
@@ -98,6 +99,11 @@ public class MovieCastController {
     public RedirectView delete(HttpServletResponse response, @PathVariable Integer id) {
         movieCastService.deleteMovieCast(id);
         return new RedirectView("/api/movieCast", true);
+    }
+
+    @RequestMapping(value="/movieCast/number", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<MovieCast> getLongestMovie() {
+        return movieCastService.getNumberOfCasts();
     }
 
 }

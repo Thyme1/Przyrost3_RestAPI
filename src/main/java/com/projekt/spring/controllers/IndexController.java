@@ -163,5 +163,21 @@ public class IndexController {
         return "Model Generated";
     }
 
+    public String forTesting(){
+
+        Address address1=new Address(UUID.randomUUID().toString(), "Lipowa", "Poznan", "23", "12", "12345");
+        Actors actor2=new Actors(UUID.randomUUID().toString(), "Morgan", "Freeman", 35, "male", 1122, "drama", address1);
+        actorService.saveActor(actor2);
+
+        Genres genre2=new Genres();
+        genre2.setName("drama");
+        genre2.setGenreId("2");
+
+        genreService.saveGenres(genre2);
+
+        return "done";
+
+    }
+
 }
 

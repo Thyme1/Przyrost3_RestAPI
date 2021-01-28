@@ -14,4 +14,6 @@ public interface MovieCastRepository extends CrudRepository<MovieCast, Integer>,
     Integer checkIfExist(Integer id);
 
 
+    @Query("select count(*) from MovieCast p")
+    Iterable<MovieCast> getNumberOfCasts();
 }

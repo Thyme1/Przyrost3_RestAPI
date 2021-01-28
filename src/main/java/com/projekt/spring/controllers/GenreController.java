@@ -104,7 +104,7 @@ public class GenreController {
     @RequestMapping(value="/genre/{id}", method=RequestMethod.DELETE)
     public RedirectView delete(HttpServletResponse response, @PathVariable Integer id) {
         genresService.deleteGenres(id);
-        return new RedirectView("/api/genre", true);
+        return new RedirectView("/api/genres", false);
     }
 
     @RequestMapping(value="/genre/comedy", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)

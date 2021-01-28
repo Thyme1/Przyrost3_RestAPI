@@ -46,5 +46,9 @@ public class MovieCastServiceImpl implements MovieCastService {
             return false;
     }
 
+    @Override
+    public Iterable<MovieCast> getNumberOfCasts() {
+        return movieCastRepository.getNumberOfCasts();    }
+
 
 }
