@@ -1,7 +1,6 @@
 package com.projekt.spring.services;
 
 import com.projekt.spring.entities.MovieCast;
-import java.util.Optional;
 
 public interface MovieCastService {
 

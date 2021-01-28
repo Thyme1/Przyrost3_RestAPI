@@ -31,22 +31,21 @@ public class ActorController {
 
     /**
      * List all products.
-     *
      */
-    @RequestMapping(value = "/actors", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/actors", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Actors> list(Model model) {
         return actorService.listAllActors();
     }
 
     // Only for redirect!
     @ApiIgnore
-    @RequestMapping(value = "/actors", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/actors", method=RequestMethod.DELETE, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Actors> redirect(Model model) {
         return actorService.listAllActors();
     }
 
-    @RequestMapping(value = "/actors/{page}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Actors> list(@PathVariable("page") Integer pageNr,@RequestParam("size") Optional<Integer> howManyOnPage) {
+    @RequestMapping(value="/actors/{page}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Actors> list(@PathVariable("page") Integer pageNr, @RequestParam("size") Optional<Integer> howManyOnPage) {
         return actorService.listAllActorsPaging(pageNr, howManyOnPage.orElse(2));
     }
 
@@ -56,7 +55,7 @@ public class ActorController {
      *
      * @return
      */
-    @RequestMapping(value = "/actor/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/actor/{id}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Actors> getByPublicId(@PathVariable("id") Integer publicId) {
         return actorService.getActorById(publicId);
     }
@@ -66,16 +65,15 @@ public class ActorController {
      *
      * @return
      */
-    @RequestMapping(value = "/actor", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/actor", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Actors> getByParamPublicId(@RequestParam("id") Integer publicId) {
         return actorService.getActorById(publicId);
     }
 
     /**
      * Save actor to database.
-     *
      */
-    @RequestMapping(value = "/actor", method = RequestMethod.POST)
+    @RequestMapping(value="/actor", method=RequestMethod.POST)
     public ResponseEntity<Actors> create(@RequestBody @Valid @NotNull Actors actor) {
         actor.setActorID(UUID.randomUUID().toString());
         actorService.saveActor(actor);
@@ -85,11 +83,10 @@ public class ActorController {
 
     /**
      * Edit actor in database.
-     *
      */
-    @RequestMapping(value = "/actor", method = RequestMethod.PUT)
+    @RequestMapping(value="/actor", method=RequestMethod.PUT)
     public ResponseEntity<Void> edit(@RequestBody @Valid @NotNull Actors actor) {
-        if(!actorService.checkIfExist(actor.getId()))
+        if (!actorService.checkIfExist(actor.getId()))
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         else {
             actorService.saveActor(actor);
@@ -99,21 +96,18 @@ public class ActorController {
 
     /**
      * Delete actor by its id.
-     *
      */
-    @RequestMapping(value = "/actor/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value="/actor/{id}", method=RequestMethod.DELETE)
     public RedirectView delete(HttpServletResponse response, @PathVariable Integer id) {
         actorService.deleteActor(id);
         return new RedirectView("/api/actor", true);
     }
 
 
-    @RequestMapping(value = "/actor/salary", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/actor/salary", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Actors> getHighestSalaryActor(Integer salary) {
         return actorService.getHighestSalary(salary);
     }
-
-
 
 
 }

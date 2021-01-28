@@ -34,22 +34,21 @@ public class MovieController {
 
     /**
      * List all products.
-     *
      */
-    @RequestMapping(value = "/movies", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/movies", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Movie> list(Model model) {
         return movieService.listAllMovies();
     }
 
     // Only for redirect!
     @ApiIgnore
-    @RequestMapping(value = "/movies", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/movies", method=RequestMethod.DELETE, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Movie> redirect(Model model) {
         return movieService.listAllMovies();
     }
 
-    @RequestMapping(value = "/movie/{page}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Movie> list(@PathVariable("page") Integer pageNr,@RequestParam("size") Optional<Integer> howManyOnPage) {
+    @RequestMapping(value="/movie/{page}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Movie> list(@PathVariable("page") Integer pageNr, @RequestParam("size") Optional<Integer> howManyOnPage) {
         return movieService.listAllMoviesPaging(pageNr, howManyOnPage.orElse(2));
     }
 
@@ -59,7 +58,7 @@ public class MovieController {
      *
      * @return
      */
-    @RequestMapping(value = "/movie/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/movie/{id}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Movie> getByPublicId(@PathVariable("id") Integer publicId) {
         return movieService.getMovieById(publicId);
     }
@@ -69,16 +68,15 @@ public class MovieController {
      *
      * @return
      */
-    @RequestMapping(value = "/movie", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/movie", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Movie> getByParamPublicId(@RequestParam("id") Integer publicId) {
         return movieService.getMovieById(publicId);
     }
 
     /**
      * Save product to database.
-     *
      */
-    @RequestMapping(value = "/movie", method = RequestMethod.POST)
+    @RequestMapping(value="/movie", method=RequestMethod.POST)
     public ResponseEntity<Movie> create(@RequestBody @Valid @NotNull Movie movie) {
         movie.setId(Integer.valueOf(String.valueOf(UUID.randomUUID())));
         movieService.saveMovie(movie);
@@ -88,11 +86,10 @@ public class MovieController {
 
     /**
      * Edit product in database.
-     *
      */
-    @RequestMapping(value = "/movie", method = RequestMethod.PUT)
+    @RequestMapping(value="/movie", method=RequestMethod.PUT)
     public ResponseEntity<Void> edit(@RequestBody @Valid @NotNull Movie movie) {
-        if(!movieService.checkIfExist(movie.getId()))
+        if (!movieService.checkIfExist(movie.getId()))
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         else {
             movieService.saveMovie(movie);
@@ -102,15 +99,14 @@ public class MovieController {
 
     /**
      * Delete product by its id.
-     *
      */
-    @RequestMapping(value = "/movie/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value="/movie/{id}", method=RequestMethod.DELETE)
     public RedirectView delete(HttpServletResponse response, @PathVariable Integer id) {
         movieService.deleteMovie(id);
         return new RedirectView("/api/movie", true);
     }
 
-    @RequestMapping(value = "/movie/longest", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/movie/longest", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Movie> getLongestMovie() {
         return movieService.getLongestMovie();
     }

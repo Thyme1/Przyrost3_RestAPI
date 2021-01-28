@@ -33,22 +33,21 @@ public class DirectorController {
 
     /**
      * List all products.
-     *
      */
-    @RequestMapping(value = "/directors", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/directors", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Director> list(Model model) {
         return directorService.listAllDirectors();
     }
 
     // Only for redirect!
     @ApiIgnore
-    @RequestMapping(value = "/directors", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/directors", method=RequestMethod.DELETE, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Director> redirect(Model model) {
         return directorService.listAllDirectors();
     }
 
-    @RequestMapping(value = "/directors/{page}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Director> list(@PathVariable("page") Integer pageNr,@RequestParam("size") Optional<Integer> howManyOnPage) {
+    @RequestMapping(value="/directors/{page}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Director> list(@PathVariable("page") Integer pageNr, @RequestParam("size") Optional<Integer> howManyOnPage) {
         return directorService.listAllDirectorsPaging(pageNr, howManyOnPage.orElse(2));
     }
 
@@ -58,7 +57,7 @@ public class DirectorController {
      *
      * @return
      */
-    @RequestMapping(value = "/director/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/director/{id}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Director> getByPublicId(@PathVariable("id") Integer publicId) {
         return directorService.getDirectorById(publicId);
     }
@@ -68,16 +67,15 @@ public class DirectorController {
      *
      * @return
      */
-    @RequestMapping(value = "/director", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/director", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Director> getByParamPublicId(@RequestParam("id") Integer publicId) {
         return directorService.getDirectorById(publicId);
     }
 
     /**
      * Save product to database.
-     *
      */
-    @RequestMapping(value = "/director", method = RequestMethod.POST)
+    @RequestMapping(value="/director", method=RequestMethod.POST)
     public ResponseEntity<Director> create(@RequestBody @Valid @NotNull Director director) {
         director.setDirectorId(UUID.randomUUID().toString());
         directorService.saveDirector(director);
@@ -87,11 +85,10 @@ public class DirectorController {
 
     /**
      * Edit product in database.
-     *
      */
-    @RequestMapping(value = "/director", method = RequestMethod.PUT)
+    @RequestMapping(value="/director", method=RequestMethod.PUT)
     public ResponseEntity<Void> edit(@RequestBody @Valid @NotNull Director director) {
-        if(!directorService.checkIfExist(director.getId()))
+        if (!directorService.checkIfExist(director.getId()))
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         else {
             directorService.saveDirector(director);
@@ -101,15 +98,14 @@ public class DirectorController {
 
     /**
      * Delete product by its id.
-     *
      */
-    @RequestMapping(value = "/director/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value="/director/{id}", method=RequestMethod.DELETE)
     public RedirectView delete(HttpServletResponse response, @PathVariable Integer id) {
         directorService.deleteDirector(id);
         return new RedirectView("/api/director", true);
     }
 
-    @RequestMapping(value = "/director/city", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/director/city", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Director> getHighestSalaryActor() {
         return directorService.getDirectorFromCity();
     }

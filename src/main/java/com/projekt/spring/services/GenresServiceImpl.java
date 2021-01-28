@@ -9,17 +9,16 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
-import java.util.Optional;
+
 
 /**
- * Director service implement.
+ * Genre service implement.
  */
 @Service
 public class GenresServiceImpl implements GenresService {
 
     @Autowired
     private com.projekt.spring.repositories.GenresRepository genresRepository;
-
 
 
     @Override
@@ -54,7 +53,7 @@ public class GenresServiceImpl implements GenresService {
 
     @Override
     public Iterable<Genres> listAllGenresPaging(Integer pageNr, Integer howManyOnPage) {
-        return genresRepository.findAll(new PageRequest(pageNr,howManyOnPage));
+        return genresRepository.findAll(new PageRequest(pageNr, howManyOnPage));
     }
 
     @Override

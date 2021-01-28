@@ -11,9 +11,8 @@ import java.util.Set;
 public class Director {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-
 
 
     @Column
@@ -43,8 +42,8 @@ public class Director {
         this.movies=movies;
     }
 
-    Director(String directorId){
-        this.directorId = directorId;
+    Director(String directorId) {
+        this.directorId=directorId;
     }
 
     Set<Movie> getMovies() {
@@ -91,7 +90,7 @@ public class Director {
         return directorId;
     }
 
-    public void  setDirectorId(String directorId) {
+    public void setDirectorId(String directorId) {
         this.directorId=directorId;
     }
 

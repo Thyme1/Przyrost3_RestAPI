@@ -2,7 +2,6 @@ package com.projekt.spring.services;
 
 import com.projekt.spring.entities.Director;
 
-import java.util.Optional;
 
 public interface DirectorService {
 

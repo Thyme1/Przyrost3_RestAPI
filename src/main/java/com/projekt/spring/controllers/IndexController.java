@@ -1,8 +1,6 @@
 package com.projekt.spring.controllers;
 
 
-
-
 import com.projekt.spring.entities.*;
 import com.projekt.spring.services.*;
 import org.joda.time.DateTime;
@@ -44,26 +42,26 @@ public class IndexController {
     @Autowired
     private MovieCastService movieCastService;
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value="", method=RequestMethod.GET)
     String index() {
         return "index";
     }
 
 
-    @RequestMapping(value = "generateModel", method = RequestMethod.POST, produces = MediaType.TEXT_PLAIN_VALUE)
+    @RequestMapping(value="generateModel", method=RequestMethod.POST, produces=MediaType.TEXT_PLAIN_VALUE)
     public String generateModel() {
 
-        LocalDateTime localtDateAndTime = LocalDateTime.now();
-        ZoneId zoneId = ZoneId.systemDefault();
-        ZonedDateTime dateAndTime  = ZonedDateTime.of(localtDateAndTime, zoneId);
+        LocalDateTime localtDateAndTime=LocalDateTime.now();
+        ZoneId zoneId=ZoneId.systemDefault();
+        ZonedDateTime dateAndTime=ZonedDateTime.of(localtDateAndTime, zoneId);
 
         //TWORZYMY ADRESY
         Address address1=new Address(UUID.randomUUID().toString(), "Lipowa", "Poznan", "23", "12", "12345");
-        Address address2=new Address(UUID.randomUUID().toString(),"Oak","Nowy Jork","12", "122", "56789"  );
-        Address address3=new Address(UUID.randomUUID().toString(), "Angel", "Los Angeles", "27", "14", "34561"  );
-        Address address4=new Address(UUID.randomUUID().toString(), "Sesame", "Las Vegas", "33", "22", "22222"  );
-        Address address5=new Address(UUID.randomUUID().toString(), "Cisowa", "Warszawa", "21", "23", "11111"  );
-        Address address6=new Address(UUID.randomUUID().toString(), "Double", "Toronto", "55", "56", "12122"  );
+        Address address2=new Address(UUID.randomUUID().toString(), "Oak", "Nowy Jork", "12", "122", "56789");
+        Address address3=new Address(UUID.randomUUID().toString(), "Angel", "Los Angeles", "27", "14", "34561");
+        Address address4=new Address(UUID.randomUUID().toString(), "Sesame", "Las Vegas", "33", "22", "22222");
+        Address address5=new Address(UUID.randomUUID().toString(), "Cisowa", "Warszawa", "21", "23", "11111");
+        Address address6=new Address(UUID.randomUUID().toString(), "Double", "Toronto", "55", "56", "12122");
 
         addressService.saveAddress(address1);
         addressService.saveAddress(address2);

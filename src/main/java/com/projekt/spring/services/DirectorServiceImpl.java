@@ -1,13 +1,12 @@
 package com.projekt.spring.services;
 
-import com.projekt.spring.entities.Actors;
 import com.projekt.spring.entities.Director;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
-import java.util.Optional;
+
 
 /**
  * Director service implement.
@@ -17,7 +16,6 @@ public class DirectorServiceImpl implements DirectorService {
 
     @Autowired
     private com.projekt.spring.repositories.DirectorRepository directorRepository;
-
 
 
     @Override
@@ -52,7 +50,7 @@ public class DirectorServiceImpl implements DirectorService {
 
     @Override
     public Iterable<Director> listAllDirectorsPaging(Integer pageNr, Integer howManyOnPage) {
-        return directorRepository.findAll(new PageRequest(pageNr,howManyOnPage));
+        return directorRepository.findAll(new PageRequest(pageNr, howManyOnPage));
     }
 
     @Override

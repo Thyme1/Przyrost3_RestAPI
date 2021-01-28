@@ -9,7 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
-import java.util.Optional;
+
 
 /**
  * Actor service implement.
@@ -22,7 +22,6 @@ public class ActorServiceImpl implements ActorService {
 
     @Autowired
     private AddressRepository addressRepository;
-
 
 
     @Override
@@ -55,7 +54,7 @@ public class ActorServiceImpl implements ActorService {
 
     @Override
     public Iterable<Actors> listAllActorsPaging(Integer pageNr, Integer howManyOnPage) {
-        return actorRepository.findAll(new PageRequest(pageNr,howManyOnPage));
+        return actorRepository.findAll(new PageRequest(pageNr, howManyOnPage));
     }
 
     @Override

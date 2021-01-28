@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
-import java.util.Optional;
+
 @Service
 public class AddressServiceImpl implements AddressService {
 
@@ -49,7 +49,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Iterable<Address> getSmallestHouseNr(Integer number) {
-       return addressRepository.getSmallestHouseNr(number);
+        return addressRepository.getSmallestHouseNr(number);
     }
 
 }

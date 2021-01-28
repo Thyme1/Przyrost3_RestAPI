@@ -33,21 +33,18 @@ public class AddressController {
 
     /**
      * List all products.
-     *
      */
-    @RequestMapping(value = "/addresses", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/addresses", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Address> list(Model model) {
         return addressService.listAllAdresses();
     }
 
     // Only for redirect!
     @ApiIgnore
-    @RequestMapping(value = "/addresses", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/addresses", method=RequestMethod.DELETE, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Address> redirect(Model model) {
         return addressService.listAllAdresses();
     }
-
-
 
 
     /**
@@ -55,7 +52,7 @@ public class AddressController {
      *
      * @return
      */
-    @RequestMapping(value = "/address/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/address/{id}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Address> getByPublicId(@PathVariable("id") Integer publicId) {
         return addressService.getAddressById(publicId);
     }
@@ -65,16 +62,15 @@ public class AddressController {
      *
      * @return
      */
-    @RequestMapping(value = "/address", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/address", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Address> getByParamPublicId(@RequestParam("id") Integer publicId) {
         return addressService.getAddressById(publicId);
     }
 
     /**
      * Save product to database.
-     *
      */
-    @RequestMapping(value = "/address", method = RequestMethod.POST)
+    @RequestMapping(value="/address", method=RequestMethod.POST)
     public ResponseEntity<Address> create(@RequestBody @Valid @NotNull Address address) {
         address.setAddressId(UUID.randomUUID().toString());
         addressService.saveAddress(address);
@@ -84,11 +80,10 @@ public class AddressController {
 
     /**
      * Edit product in database.
-     *
      */
-    @RequestMapping(value = "/address", method = RequestMethod.PUT)
+    @RequestMapping(value="/address", method=RequestMethod.PUT)
     public ResponseEntity<Void> edit(@RequestBody @Valid @NotNull Address address) {
-        if(!addressService.checkIfExist(address.getId()))
+        if (!addressService.checkIfExist(address.getId()))
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         else {
             addressService.saveAddress(address);
@@ -98,16 +93,15 @@ public class AddressController {
 
     /**
      * Delete product by its id.
-     *
      */
-    @RequestMapping(value = "/address/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value="/address/{id}", method=RequestMethod.DELETE)
     public RedirectView delete(HttpServletResponse response, @PathVariable Integer id) {
         addressService.deleteAddress(id);
         return new RedirectView("/api/address", true);
     }
 
 
-    @RequestMapping(value = "/address/smallest", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/address/smallest", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Address> getHighestSalaryActor(Integer number) {
         return addressService.getSmallestHouseNr(number);
     }

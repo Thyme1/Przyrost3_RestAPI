@@ -6,15 +6,12 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 
-import java.util.List;
-
 public interface MovieCastRepository extends CrudRepository<MovieCast, Integer>, PagingAndSortingRepository<MovieCast, Integer> {
 
     MovieCast findByMovieCastId(String productId);
 
     @Query("select count(*) from MovieCast p where p.id = ?1")
     Integer checkIfExist(Integer id);
-
 
 
 }

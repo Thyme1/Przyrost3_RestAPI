@@ -2,6 +2,7 @@ package com.projekt.spring.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,7 +12,7 @@ import java.time.ZonedDateTime;
 import java.util.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "address", propOrder = {
+@XmlType(name="address", propOrder={
         "name",
         "surname",
         "age",
@@ -23,12 +24,12 @@ import java.util.*;
 })
 
 
-@Entity(name = "Actors")
-@Table(name = "actors")
+@Entity(name="Actors")
+@Table(name="actors")
 public class Actors {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
     @Column
@@ -48,27 +49,27 @@ public class Actors {
 
 
     //required by Hibernate
-    public Actors(){
+    public Actors() {
 
     }
 
-    public Actors(String actorID, String name, String surname, Integer age, String gender, Integer salary, String favGenre, Address address ) {
-        this.actorID = actorID;
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-        this.gender = gender;
-        this.salary = salary;
-        this.favGenre = favGenre;
-        this.address = address;
-        this.movies = movies;
+    public Actors(String actorID, String name, String surname, Integer age, String gender, Integer salary, String favGenre, Address address) {
+        this.actorID=actorID;
+        this.name=name;
+        this.surname=surname;
+        this.age=age;
+        this.gender=gender;
+        this.salary=salary;
+        this.favGenre=favGenre;
+        this.address=address;
+        this.movies=movies;
     }
 
-    @OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.PERSIST)
+    @OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
     @JoinColumn(name="address_id")
     Address address;
 
-    @OneToMany(mappedBy="actorId",fetch=FetchType.EAGER)
+    @OneToMany(mappedBy="actorId", fetch=FetchType.EAGER)
 //    @JsonBackReference(value="act")
     private Set<MovieCast> movies;
 
@@ -76,6 +77,7 @@ public class Actors {
     Set<MovieCast> getMovies() {
         return movies;
     }
+
     public void setMovies(Set<MovieCast> movies) {
         this.movies=movies;
     }
@@ -83,7 +85,6 @@ public class Actors {
     String getFavGenre() {
         return favGenre;
     }
-
 
 
     public void setFavGenre(String favGenre) {
@@ -98,6 +99,7 @@ public class Actors {
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer idAct) {
         this.id=idAct;
     }
@@ -105,6 +107,7 @@ public class Actors {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name=name;
     }
@@ -112,6 +115,7 @@ public class Actors {
     public String getSurname() {
         return surname;
     }
+
     public void setSurname(String surname) {
         this.surname=surname;
     }
@@ -119,6 +123,7 @@ public class Actors {
     public Integer getAge() {
         return age;
     }
+
     public void setAge(Integer age) {
         this.age=age;
     }
@@ -126,6 +131,7 @@ public class Actors {
     public String getGender() {
         return gender;
     }
+
     public void setGender(String gender) {
         this.gender=gender;
     }
@@ -134,6 +140,7 @@ public class Actors {
     public Integer getSalary() {
         return salary;
     }
+
     public void setSalary(Integer salary) {
         this.salary=salary;
     }
@@ -141,19 +148,21 @@ public class Actors {
     public void setAddress(Address address1) {
         this.address=address1;
     }
+
     @JsonIgnore
-    public Integer counter = 50;
+    public Integer counter=50;
 
 
     public Address getAddress() {
-        if(address != null)
+        if (address != null)
             return address;
-        else{ counter=counter+1;
-            Address adresNull = new Address();
+        else {
+            counter=counter + 1;
+            Address adresNull=new Address();
             adresNull.setId(counter++);
-            return adresNull ;}
+            return adresNull;
+        }
     }
-
 
 
     public String getActorID() {

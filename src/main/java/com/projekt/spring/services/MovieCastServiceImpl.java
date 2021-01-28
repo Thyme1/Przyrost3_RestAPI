@@ -6,17 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
-import java.util.Optional;
 
 /**
- * Director service implement.
+ * MovieCast service implement.
  */
 @Service
 public class MovieCastServiceImpl implements MovieCastService {
 
     @Autowired
     private com.projekt.spring.repositories.MovieCastRepository movieCastRepository;
-
 
 
     @Override

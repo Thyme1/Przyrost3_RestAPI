@@ -19,7 +19,6 @@ public class MovieServiceImpl implements MovieService {
     private com.projekt.spring.repositories.MovieRepository movieRepository;
 
 
-
     @Override
     public Iterable<Movie> listAllMovies() {
         return movieRepository.findAll();
@@ -52,7 +51,7 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Iterable<Movie> listAllMoviesPaging(Integer pageNr, Integer howManyOnPage) {
-        return movieRepository.findAll(new PageRequest(pageNr,howManyOnPage));
+        return movieRepository.findAll(new PageRequest(pageNr, howManyOnPage));
     }
 
     @Override

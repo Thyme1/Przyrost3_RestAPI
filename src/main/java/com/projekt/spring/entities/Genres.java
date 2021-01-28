@@ -11,7 +11,7 @@ public class Genres {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
     @Column
@@ -32,10 +32,9 @@ public class Genres {
     }
 
     public Genres(String genreId, String name) {
-        this.genreId = genreId;
+        this.genreId=genreId;
         this.name=name;
     }
-
 
 
     public String getName() {

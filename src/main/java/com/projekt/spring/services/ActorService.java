@@ -3,7 +3,6 @@ package com.projekt.spring.services;
 
 import com.projekt.spring.entities.Actors;
 
-import java.util.Optional;
 
 public interface ActorService {
 

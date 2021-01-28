@@ -1,6 +1,7 @@
 package com.projekt.spring.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -9,13 +10,12 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 
-
 @Entity
 @Table(name="ADDRESSES")
 
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
     @Column
@@ -53,9 +53,6 @@ public class Address {
         this.housenr=housenr;
         this.postcode=postcode;
     }
-
-
-
 
 
     public void setId(Integer idAdd) {
@@ -107,7 +104,7 @@ public class Address {
     }
 
     public void setAddressId(String productId) {
-        this.addressId = productId;
+        this.addressId=productId;
     }
 
 

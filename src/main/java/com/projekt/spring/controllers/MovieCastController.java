@@ -33,21 +33,18 @@ public class MovieCastController {
 
     /**
      * List all movieCasts.
-     *
      */
-    @RequestMapping(value = "/movieCasts", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/movieCasts", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<MovieCast> list(Model model) {
         return movieCastService.listAllMovieCasts();
     }
 
     // Only for redirect!
     @ApiIgnore
-    @RequestMapping(value = "/movieCasts", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/movieCasts", method=RequestMethod.DELETE, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<MovieCast> redirect(Model model) {
         return movieCastService.listAllMovieCasts();
     }
-
-
 
 
     /**
@@ -55,7 +52,7 @@ public class MovieCastController {
      *
      * @return
      */
-    @RequestMapping(value = "/movieCast/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/movieCast/{id}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<MovieCast> getByPublicId(@PathVariable("id") Integer publicId) {
         return movieCastService.getMovieCastById(publicId);
     }
@@ -65,16 +62,15 @@ public class MovieCastController {
      *
      * @return
      */
-    @RequestMapping(value = "/movieCast", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/movieCast", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public Iterable<MovieCast> getByParamPublicId(@RequestParam("id") Integer publicId) {
         return movieCastService.getMovieCastById(publicId);
     }
 
     /**
      * Save movieCast to database.
-     *
      */
-    @RequestMapping(value = "/movieCast", method = RequestMethod.POST)
+    @RequestMapping(value="/movieCast", method=RequestMethod.POST)
     public ResponseEntity<MovieCast> create(@RequestBody @Valid @NotNull MovieCast actor) {
         actor.setMovieCastId(UUID.randomUUID().toString());
         movieCastService.saveMovieCast(actor);
@@ -84,11 +80,10 @@ public class MovieCastController {
 
     /**
      * Edit movieCast in database.
-     *
      */
-    @RequestMapping(value = "/movieCast", method = RequestMethod.PUT)
+    @RequestMapping(value="/movieCast", method=RequestMethod.PUT)
     public ResponseEntity<Void> edit(@RequestBody @Valid @NotNull MovieCast actor) {
-        if(!movieCastService.checkIfExist(actor.getId()))
+        if (!movieCastService.checkIfExist(actor.getId()))
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         else {
             movieCastService.saveMovieCast(actor);
@@ -98,9 +93,8 @@ public class MovieCastController {
 
     /**
      * Delete product by its id.
-     *
      */
-    @RequestMapping(value = "/movieCast/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value="/movieCast/{id}", method=RequestMethod.DELETE)
     public RedirectView delete(HttpServletResponse response, @PathVariable Integer id) {
         movieCastService.deleteMovieCast(id);
         return new RedirectView("/api/movieCast", true);
